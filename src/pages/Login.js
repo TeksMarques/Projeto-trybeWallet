@@ -3,6 +3,9 @@ import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
 import { getUser } from '../redux/actions';
 
+// uso do .test() https://developer.mozilla.org/pt-BR/docs/Web/JavaScript/Reference/Global_Objects/RegExp/test //
+// para validação de email: https://irias.com.br/blog/como-validar-email-e-senha-em-javascript/ //
+
 class Login extends React.Component {
   state = {
     email: '',
