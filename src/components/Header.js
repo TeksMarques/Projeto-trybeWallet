@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
+import './Header.css';
 
 class Header extends Component {
   state = {
@@ -13,17 +14,26 @@ class Header extends Component {
     const { valor, currency } = this.state;
 
     return (
-      <header>
-        <div>
-          <p data-testid="email-field">{email}</p>
+      <div className="Header">
+        <div className="Header__user header-info">
+          <p data-testid="email-field">
+            <span>Email: </span>
+            {email}
+          </p>
         </div>
-        <div>
-          <p data-testid="total-field">{valor}</p>
+        <div className="Header__user header-info">
+          <p data-testid="total-field">
+            <span>Total de despesas: </span>
+            {valor}
+          </p>
         </div>
-        <div>
-          <p data-testid="header-currency-field">{currency}</p>
+        <div className="Header__user header-info">
+          <p data-testid="header-currency-field">
+            <span>Moedas: </span>
+            {currency}
+          </p>
         </div>
-      </header>
+      </div>
     );
   }
 }

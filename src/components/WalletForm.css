@@ -1,0 +1,14 @@
+.WalletForm {
+    align-items: center;
+    display: flex;
+    min-height: 20vh;
+  }
+  
+  .WalletForm__container {
+    align-items: center;
+    background-color: #005f50;
+    display: flex;
+    height: 20vh;
+    justify-content: space-around;
+    width: 100%;
+  }

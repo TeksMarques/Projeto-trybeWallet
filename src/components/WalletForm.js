@@ -2,6 +2,7 @@ import React from 'react';
 import { connect } from 'react-redux';
 import { arrayOf, string, PropTypes } from 'prop-types';
 import { getCurrencies } from '../redux/actions';
+import './WalletForm.css';
 
 class WalletForm extends React.Component {
   state = {
@@ -33,8 +34,8 @@ class WalletForm extends React.Component {
     const { currencies } = this.props;
 
     return (
-      <main>
-        <div>
+      <div className="WalletForm">
+        <div className="WalletForm__container">
           <input
             data-testid="value-input"
             type="number"
@@ -44,8 +45,6 @@ class WalletForm extends React.Component {
             value={ despesas }
             onChange={ this.handleChange }
           />
-        </div>
-        <div>
           <input
             data-testid="description-input"
             type="text"
@@ -55,31 +54,31 @@ class WalletForm extends React.Component {
             value={ descricao }
             onChange={ this.handleChange }
           />
+          <select data-testid="currency-input">
+            {
+              currencies.map((moeda) => (
+                <option value={ moeda } key={ moeda }>{moeda}</option>
+              ))
+            }
+          </select>
+          <select data-testid="method-input">
+            <option value="Dinheiro" name="Dinheiro">Dinheiro</option>
+            <option value="Cartão de crédito" name="Cartão de crédito">
+              Cartão de crédito
+            </option>
+            <option value="Cartão de débito" name="Cartão de débito">
+              Cartão de débito
+            </option>
+          </select>
+          <select data-testid="tag-input">
+            <option name="Alimentação" value="Alimentação">Alimentação</option>
+            <option name="Lazer" value="Lazer">Lazer</option>
+            <option name="Transporte" value="Transporte">Transporte</option>
+            <option name="Saúde" value="Saúde">Saúde</option>
+            <option name="Trabalho" value="Trabalho">Trabalho</option>
+          </select>
         </div>
-        <select data-testid="currency-input">
-          {
-            currencies.map((moeda) => (
-              <option value={ moeda } key={ moeda }>{moeda}</option>
-            ))
-          }
-        </select>
-        <select data-testid="method-input">
-          <option value="Dinheiro" name="Dinheiro">Dinheiro</option>
-          <option value="Cartão de crédito" name="Cartão de crédito">
-            Cartão de crédito
-          </option>
-          <option value="Cartão de débito" name="Cartão de débito">
-            Cartão de débito
-          </option>
-        </select>
-        <select data-testid="tag-input">
-          <option name="Alimentação" value="Alimentação">Alimentação</option>
-          <option name="Lazer" value="Lazer">Lazer</option>
-          <option name="Transporte" value="Transporte">Transporte</option>
-          <option name="Saúde" value="Saúde">Saúde</option>
-          <option name="Trabalho" value="Trabalho">Trabalho</option>
-        </select>
-      </main>
+      </div>
     );
   }
 }
