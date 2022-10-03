@@ -1,17 +1,17 @@
 // Esse reducer será responsável por tratar o todas as informações relacionadas as despesas
-import { GET_CURRENCIES, LOADING } from '../actions';
+import { GET_CURRENCIES, GET_EXPENSES } from '../actions';
 
 const INITIAL_STATE = {
-  loading: false,
   currencies: [],
+  expenses: [],
 };
 
 function currency(state = INITIAL_STATE, action) {
   switch (action.type) {
-  case LOADING:
-    return { ...state, loading: true };
   case GET_CURRENCIES:
-    return { ...state, currencies: action.currencies, loading: false };
+    return { ...state, currencies: action.currencies };
+  case GET_EXPENSES:
+    return { ...state, expenses: [...state.expenses, action.expenses] };
   default:
     return state;
   }

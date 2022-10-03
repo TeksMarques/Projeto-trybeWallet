@@ -2,6 +2,7 @@
 export const GET_USER = 'GET_USER';
 export const GET_CURRENCIES = 'GET_CURRENCIES';
 export const LOADING = 'LOADING';
+export const GET_EXPENSES = 'GET_EXPENSES';
 
 export const getUser = (email) => ({
   type: GET_USER,
@@ -13,6 +14,7 @@ export const getCurrencies = (currencies) => ({
   currencies,
 });
 
-export const loading = () => ({
-  type: LOADING,
+export const getExpenses = (expenses) => ({
+  type: GET_EXPENSES,
+  expenses,
 });
