@@ -92,8 +92,8 @@ class WalletForm extends React.Component {
             value={ moeda }
           >
             {
-              currencies.map((moeda) => (
-                <option value={ moeda } key={ moeda }>{moeda}</option>
+              currencies.map((moedas) => (
+                <option value={ moedas } key={ moedas }>{moedas}</option>
               ))
             }
           </select>
