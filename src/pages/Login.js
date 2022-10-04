@@ -36,6 +36,7 @@ class Login extends React.Component {
                 className="Login__form-input"
                 data-testid="email-input"
                 value={ email }
+                placeholder="Email"
                 onChange={ ({ target: { value } }) => this.setState({ email: value }) }
               />
             </div>
@@ -45,6 +46,7 @@ class Login extends React.Component {
                 className="Login__form-input"
                 data-testid="password-input"
                 value={ password }
+                placeholder="Senha"
                 onChange={ ({ target: { value } }) => this.setState({ password: value }) }
               />
             </div>
