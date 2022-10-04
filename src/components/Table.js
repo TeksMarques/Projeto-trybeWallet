@@ -2,8 +2,18 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { arrayOf, shape } from 'prop-types';
 import './Table.css';
+import { deleteExpense } from '../redux/actions';
 
 class Table extends Component {
+  apagarDespesa = (id) => {
+    const { dispatch, expenses } = this.props;
+    const removeItem = expenses.filter((expense) => (
+      expense.id !== id
+    ));
+    dispatch(deleteExpense(removeItem));
+    console.log(removeItem, 'aqui');
+  };
+
   render() {
     const { expenses } = this.props;
     return (
@@ -23,28 +33,32 @@ class Table extends Component {
             </tr>
           </thead>
           <tbody>
-            {
-              expenses.map((d) => (
-                <tr key={ d.id }>
-                  <td className="cell">{ d.description }</td>
-                  <td className="cell">{ d.tag }</td>
-                  <td className="cell">{ d.method }</td>
-                  <td className="cell">{Number(d.value).toFixed(2)}</td>
-                  <td className="cell">{ d.exchangeRates[d.currency].name}</td>
-                  <td className="cell">
-                    {Number(d.exchangeRates[d.currency].ask).toFixed(2)}
-                  </td>
-                  <td className="cell">
-                    {Number((d.value * d.exchangeRates[d.currency].ask).toFixed(2))}
-                  </td>
-                  <td className="cell">Real</td>
-                  <td className="cell">
-                    <button type="button">Editar</button>
-                    <button type="button">Excluir</button>
-                  </td>
-                </tr>
-              ))
-            }
+            {expenses.map((e) => (
+              <tr key={ e.id }>
+                <td className="cell">{e.description}</td>
+                <td className="cell">{e.tag}</td>
+                <td className="cell">{e.method}</td>
+                <td className="cell">{Number(e.value).toFixed(2)}</td>
+                <td className="cell">{e.exchangeRates[e.currency].name}</td>
+                <td className="cell">
+                  {Number(e.exchangeRates[e.currency].ask).toFixed(2)}
+                </td>
+                <td className="cell">
+                  {Number((e.value * e.exchangeRates[e.currency].ask)).toFixed(2)}
+                </td>
+                <td className="cell">Real</td>
+                <td className="cell">
+                  <button type="button">Editar</button>
+                  <button
+                    type="button"
+                    data-testid="delete-btn"
+                    onClick={ () => this.apagarDespesa(e.id) }
+                  >
+                    Excluir
+                  </button>
+                </td>
+              </tr>
+            ))}
           </tbody>
         </table>
       </div>
